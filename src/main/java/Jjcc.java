@@ -18,10 +18,14 @@ public class Jjcc {
             InputStreamReader inputStreamReader = new InputStreamReader(System.in);
             reader = new BufferedReader(inputStreamReader);
             String str = reader.readLine();
-            while (!"#".equals(str)) {
-                System.out.println("运算结果为：" + opt(str) + "");
-                System.out.println("请输入表达式：或直接输入#结束运算！");
-                str = reader.readLine();
+            if (str.contains("/0")) {
+                System.out.println("除数不能为0");
+            } else {
+                while (!"#".equals(str)) {
+                    System.out.println("运算结果为：" + opt(str) + "");
+                    System.out.println("请输入表达式：或直接输入#结束运算！");
+                    str = reader.readLine();
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,6 +44,7 @@ public class Jjcc {
         if (s == null || "".equals(s.trim())) {
             return 0f;
         }
+
         //符号的下标
         int a1 = s.indexOf("+");
         int a2 = s.indexOf("-");
